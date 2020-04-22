@@ -1,0 +1,65 @@
+*******************************************SCHEMA CREATION********************************************************
+curl --location --request POST 'http://localhost:8081/dataCreation/v1/schema?user=satyamku' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "query": "CREATE TABLE SignUp (id INTEGER not NULL, first VARCHAR(255), last VARCHAR(255), age INTEGER, PRIMARY KEY ( id ));",
+    "dbConnDtls": {
+        "dbConnUrl": "jdbc:mysql://localhost:3306/try",
+        "dbUser": "root",
+        "dbPassword": "root",
+        "driverClass": "com.mysql.cj.jdbc.Driver"
+    }
+}'
+
+
+*********************************************DATA ENTRY*************************************************************
+curl --location --request POST 'localhost:8081/dataCreation/v1/data?user=satyamku' \
+--header 'Content-Type: application/json' \
+--header 'Content-Type: text/plain' \
+--data-raw '{
+    "fileDetails": {
+        "fileLocation": "C:/Users/satyamku/IdeaProject/test-client-data/",
+        "fileName": "signupData.txt"
+    },
+    "fieldDtls": [
+        {
+            "fieldName": "id",
+            "dateField": false,
+            "inputDateFormat": null,
+            "outputDateFormat":null,
+            "startIndex": 0,
+            "lastIndex": 6
+        },
+        {
+            "fieldName": "first",
+            "dateField": false,
+            "inputDateFormat": null,
+            "outputDateFormat":null,
+            "startIndex": 7,
+            "lastIndex": 27
+        },
+        {
+            "fieldName": "last",
+            "dateField": false,
+            "inputDateFormat": null,
+            "outputDateFormat":null,
+            "startIndex": 28,
+            "lastIndex": 48
+        },
+        {
+            "fieldName": "age",
+            "dateField": false,
+            "inputDateFormat": null,
+            "outputDateFormat":null,
+            "startIndex": 49,
+            "lastIndex": 51
+        }
+    ],
+    "dbConnDtls": {
+        "dbConnUrl": "jdbc:mysql://localhost:3306/try",
+        "dbUser": "root",
+        "dbPassword": "root",
+        "driverClass": "com.mysql.cj.jdbc.Driver"
+    },
+    "tableName":"signup"
+}'
