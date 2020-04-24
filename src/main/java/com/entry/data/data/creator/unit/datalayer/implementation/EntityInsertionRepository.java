@@ -1,6 +1,6 @@
 package com.entry.data.data.creator.unit.datalayer.implementation;
 
-import com.entry.data.data.creator.unit.datalayer.interfaces.IInsertEntryRepository;
+import com.entry.data.data.creator.unit.datalayer.interfaces.IEntityInsertionRepository;
 import com.entry.data.data.creator.unit.model.EntryResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,9 +12,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Queue;
 
-public class InsertEntryRepository implements IInsertEntryRepository {
+public class EntityInsertionRepository implements IEntityInsertionRepository {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(InsertEntryRepository.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(EntityInsertionRepository.class);
 
     @Inject
     Provider<EntryResponse> entryResponseProvider;

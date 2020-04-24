@@ -1,17 +1,9 @@
 package com.entry.data.data.creator.unit.config;
 
-import com.entry.data.data.creator.unit.service.implementation.DataEntryApplicationService;
-import com.entry.data.data.creator.unit.service.implementation.DataEntryDomainService;
-import com.entry.data.data.creator.unit.service.implementation.SchemaCreationApplicationService;
-import com.entry.data.data.creator.unit.service.implementation.SchemaCreationDomainService;
-import com.entry.data.data.creator.unit.service.interfaces.ISchemaCreationDomainService;
-import com.entry.data.data.creator.unit.service.validators.implementation.SchemaCreationInputValidationService;
-import com.entry.data.data.creator.unit.service.interfaces.IDataEntryApplicationService;
-import com.entry.data.data.creator.unit.service.interfaces.IFileDataHandlingDomainService;
-import com.entry.data.data.creator.unit.service.interfaces.ISchemaCreationApplicationService;
-import com.entry.data.data.creator.unit.service.validators.interfaces.ISchemaCreationInputValidationService;
-import com.entry.data.data.creator.unit.service.validators.implementation.DataEntryDataEnrtyInputValidationService;
-import com.entry.data.data.creator.unit.service.validators.interfaces.IDataEnrtyInputValidationService;
+import com.entry.data.data.creator.unit.service.implementation.*;
+import com.entry.data.data.creator.unit.service.interfaces.*;
+import com.entry.data.data.creator.unit.service.validators.implementation.*;
+import com.entry.data.data.creator.unit.service.validators.interfaces.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -49,5 +41,20 @@ public class ServiceConfig {
     @Bean
     public ISchemaCreationDomainService getSchemaCreationDomainService(){
         return new SchemaCreationDomainService();
+    }
+
+    @Bean
+    public IDatabaseCreationApplicationService getDatabaseCreationApplicationService(){
+        return new DatabaseCreationApplicationService();
+    }
+
+    @Bean
+    public IDatabaseCreationInputValidationService getDatabaseCreationInputValidationService(){
+        return new DatabaseCreationInputValidationService();
+    }
+
+    @Bean
+    public IDatabaseCreationDomainService getDatabaseCreationDomainService(){
+        return new DatabaseCreationDomainService();
     }
 }

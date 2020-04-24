@@ -4,7 +4,7 @@ import com.entry.data.data.creator.unit.model.EntryResponse;
 
 import java.sql.Connection;
 
-public interface ICreateSchemaRepository {
+public interface ISchemaCreationRepository {
 
     public EntryResponse createSchemaByQuery(String query, Connection conn);
 

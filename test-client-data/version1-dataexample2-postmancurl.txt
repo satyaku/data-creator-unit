@@ -1,8 +1,8 @@
-*******************************************SCHEMA CREATION********************************************************
+**************************************SChEMA CREATION**********************************************
 curl --location --request POST 'http://localhost:8081/dataCreation/v1/schema?user=satyamku' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "query": "CREATE TABLE SignUp (id INTEGER not NULL, first VARCHAR(255), last VARCHAR(255), age INTEGER, PRIMARY KEY ( id ));",
+    "query": "CREATE TABLE Customer (customer_id INTEGER NOT NULL, customer_type varchar(5), customer_status varchar(5), status_date DATETIME, bill_cycle INTEGER, PRIMARY KEY (customer_id));",
     "dbConnDtls": {
         "dbConnUrl": "jdbc:mysql://localhost:3306/try",
         "dbUser": "root",
@@ -12,47 +12,55 @@ curl --location --request POST 'http://localhost:8081/dataCreation/v1/schema?use
 }'
 
 
-*********************************************DATA ENTRY*************************************************************
+****************************************DATA ENTRY****************************************************
 curl --location --request POST 'localhost:8081/dataCreation/v1/data?user=satyamku' \
 --header 'Content-Type: application/json' \
 --header 'Content-Type: text/plain' \
 --data-raw '{
     "fileDetails": {
-        "fileLocation": "C:/Users/satyamku/IdeaProject/test-client-data/",
-        "fileName": "signupData.txt"
+        "fileLocation": "C:/Users/satyamku/IdeaProject/data-creator-unit/test-client-data/",
+        "fileName": "data.txt"
     },
     "fieldDtls": [
         {
-            "fieldName": "id",
+            "fieldName": "customer_id",
             "dateField": false,
             "inputDateFormat": null,
             "desiredDateFormat":null,
             "startIndex": 0,
-            "lastIndex": 6
+            "lastIndex": 9
         },
         {
-            "fieldName": "first",
+            "fieldName": "customer_type",
             "dateField": false,
             "inputDateFormat": null,
             "desiredDateFormat":null,
-            "startIndex": 7,
-            "lastIndex": 27
+            "startIndex": 10,
+            "lastIndex": 11
         },
         {
-            "fieldName": "last",
+            "fieldName": "customer_status",
             "dateField": false,
             "inputDateFormat": null,
             "desiredDateFormat":null,
-            "startIndex": 28,
-            "lastIndex": 48
+            "startIndex": 12,
+            "lastIndex": 13
         },
         {
-            "fieldName": "age",
+            "fieldName": "status_date",
+            "dateField": true,
+            "inputDateFormat": "DD-MMM-YY HH:MM:SS",
+            "desiredDateFormat": "TIMESTAMP",
+            "startIndex": 14,
+            "lastIndex": 32
+        },
+        {
+            "fieldName": "bill_cycle",
             "dateField": false,
             "inputDateFormat": null,
             "desiredDateFormat":null,
-            "startIndex": 49,
-            "lastIndex": 51
+            "startIndex": 33,
+            "lastIndex": 35
         }
     ],
     "dbConnDtls": {
@@ -61,5 +69,5 @@ curl --location --request POST 'localhost:8081/dataCreation/v1/data?user=satyamk
         "dbPassword": "root",
         "driverClass": "com.mysql.cj.jdbc.Driver"
     },
-    "tableName":"signup"
+    "tableName":"customer"
 }'

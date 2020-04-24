@@ -5,7 +5,7 @@ import com.entry.data.data.creator.unit.model.EntryResponse;
 import java.sql.Connection;
 import java.util.Queue;
 
-public interface IInsertEntryRepository {
+public interface IEntityInsertionRepository {
 
     public EntryResponse performInsert(Queue<String> query, Connection conn);
 
